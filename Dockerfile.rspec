@@ -1,0 +1,12 @@
+FROM ruby:2.2.4
+
+WORKDIR /project
+
+ADD Gemfile /project/Gemfile
+ADD Gemfile.lock /project/Gemfile.lock
+ADD vaas.gemspec /project/vaas.gemspec
+ADD lib/vaas/version.rb /project/lib/vaas/version.rb
+
+RUN bundle install
+
+ENTRYPOINT rspec
